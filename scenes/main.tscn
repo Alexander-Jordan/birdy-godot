@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp7iqge7542bm"]
+
+[ext_resource type="FontFile" uid="uid://cfjc1xfowcrc" path="res://assets/fonts/retro_computer_personal_use.ttf" id="1_2uhya"]
+
+[sub_resource type="Theme" id="Theme_hmc36"]
+default_font = ExtResource("1_2uhya")
+
+[node name="main" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_hmc36")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "Flappy Bird"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="main_menu" type="Control" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/main_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer/main_menu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="start" type="Button" parent="CanvasLayer/Control/VBoxContainer/main_menu/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
+[node name="settings" type="Button" parent="CanvasLayer/Control/VBoxContainer/main_menu/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "Settings"
