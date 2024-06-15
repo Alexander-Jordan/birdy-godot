@@ -8,7 +8,7 @@ func _input(event):
 	if not game_started:
 		return
 	
-	if and event.is_action_pressed("flap"):
+	if event.is_action_pressed("flap"):
 		game_started = true
 		start_game.emit()
 		visible = false
