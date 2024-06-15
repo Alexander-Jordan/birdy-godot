@@ -5,7 +5,7 @@ var game_started:bool = false
 signal start_game
 
 func _input(event):
-	if not game_started:
+	if game_started:
 		return
 	
 	if event.is_action_pressed("flap"):
