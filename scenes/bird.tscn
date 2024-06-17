@@ -97,7 +97,7 @@ _data = {
 "idle": SubResource("Animation_xr5tx")
 }
 
-[node name="bird" type="CharacterBody2D"]
+[node name="Bird" type="CharacterBody2D"]
 scale = Vector2(5, 5)
 script = ExtResource("1_dvkdq")
 

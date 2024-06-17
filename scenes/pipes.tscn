@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bomk2mnd3qpug"]
+
+[ext_resource type="Script" path="res://scripts/pipes.gd" id="1_m4s3v"]
+[ext_resource type="PackedScene" uid="uid://b1aufsmqyq4v6" path="res://scenes/pipe.tscn" id="2_36qse"]
+
+[node name="pipes" type="Node2D"]
+script = ExtResource("1_m4s3v")
+
+[node name="pipe_top" parent="." instance=ExtResource("2_36qse")]
+position = Vector2(55, -115)
+type = "Top"
+
+[node name="pipe_bottom" parent="." instance=ExtResource("2_36qse")]
+position = Vector2(55, 115)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(0, -100, 110, 200)
