@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dp7iqge7542bm"]
+[gd_scene load_steps=14 format=3 uid="uid://dp7iqge7542bm"]
 
 [ext_resource type="PackedScene" uid="uid://djhxoy6ja30fs" path="res://scenes/bird.tscn" id="1_0s3gh"]
 [ext_resource type="FontFile" uid="uid://cfjc1xfowcrc" path="res://assets/fonts/retro_computer_personal_use.ttf" id="1_2uhya"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/pipe_handler.gd" id="3_c5oxv"]
 [ext_resource type="Texture2D" uid="uid://qy3g7wtx6ppv" path="res://assets/sprites/ground_sprite.png" id="4_8fvxo"]
 [ext_resource type="PackedScene" uid="uid://bomk2mnd3qpug" path="res://scenes/pipes.tscn" id="4_mfq41"]
+[ext_resource type="Script" path="res://scripts/end_screen.gd" id="9_dqg7h"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u8c6u"]
 
@@ -81,6 +82,24 @@ theme = SubResource("Theme_hmc36")
 [node name="start_screen" parent="CanvasLayer/Control" instance=ExtResource("2_yc65a")]
 layout_mode = 1
 
+[node name="end_screen" type="VBoxContainer" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_dqg7h")
+
+[node name="restart_button" type="Button" parent="CanvasLayer/Control/end_screen"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 50
+text = "Restart"
+
+[connection signal="game_over" from="GameManager" to="CanvasLayer/Control/end_screen" method="_on_game_manager_game_over"]
 [connection signal="movement_stopped" from="GameManager" to="bird" method="_on_game_manager_movement_stopped"]
 [connection signal="movement_stopped" from="GameManager" to="ParallaxBackground" method="_on_game_manager_movement_stopped"]
 [connection signal="movement_stopped" from="GameManager" to="pipe_handler" method="_on_game_manager_movement_stopped"]
