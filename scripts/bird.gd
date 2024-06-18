@@ -27,3 +27,9 @@ func _on_start_game():
 
 func _on_game_manager_movement_stopped():
 	is_movement_stopped = true
+
+func _on_pipe_collision():
+	animation_player.play('collide')
+
+func _on_ground_body_entered(body):
+	animation_player.play('dead')
