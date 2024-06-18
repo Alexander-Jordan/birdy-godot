@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dp7iqge7542bm"]
+[gd_scene load_steps=15 format=3 uid="uid://dp7iqge7542bm"]
 
 [ext_resource type="PackedScene" uid="uid://djhxoy6ja30fs" path="res://scenes/bird.tscn" id="1_0s3gh"]
 [ext_resource type="FontFile" uid="uid://cfjc1xfowcrc" path="res://assets/fonts/retro_computer_personal_use.ttf" id="1_2uhya"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://qy3g7wtx6ppv" path="res://assets/sprites/ground_sprite.png" id="4_8fvxo"]
 [ext_resource type="PackedScene" uid="uid://bomk2mnd3qpug" path="res://scenes/pipes.tscn" id="4_mfq41"]
 [ext_resource type="Script" path="res://scripts/end_screen.gd" id="9_dqg7h"]
+[ext_resource type="Script" path="res://scripts/game_screen.gd" id="9_lovtg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u8c6u"]
 
@@ -19,6 +20,7 @@ normal = Vector2(0, 1)
 
 [sub_resource type="Theme" id="Theme_hmc36"]
 default_font = ExtResource("1_2uhya")
+default_font_size = 50
 
 [node name="main" type="Node2D"]
 
@@ -82,6 +84,27 @@ theme = SubResource("Theme_hmc36")
 [node name="start_screen" parent="CanvasLayer/Control" instance=ExtResource("2_yc65a")]
 layout_mode = 1
 
+[node name="game_screen" type="VBoxContainer" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_lovtg")
+
+[node name="points_label" type="Label" parent="CanvasLayer/Control/game_screen"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/game_screen"]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="end_screen" type="VBoxContainer" parent="CanvasLayer/Control"]
 visible = false
 layout_mode = 1
@@ -92,20 +115,51 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_dqg7h")
 
-[node name="restart_button" type="Button" parent="CanvasLayer/Control/end_screen"]
+[node name="Control" type="Control" parent="CanvasLayer/Control/end_screen"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/end_screen/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="score_label" type="Label" parent="CanvasLayer/Control/end_screen/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Your score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="score" type="Label" parent="CanvasLayer/Control/end_screen/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="restart_button" type="Button" parent="CanvasLayer/Control/end_screen"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
 text = "Restart"
 
+[connection signal="game_over" from="GameManager" to="CanvasLayer/Control/game_screen" method="_on_game_manager_game_over"]
 [connection signal="game_over" from="GameManager" to="CanvasLayer/Control/end_screen" method="_on_game_manager_game_over"]
 [connection signal="movement_stopped" from="GameManager" to="bird" method="_on_game_manager_movement_stopped"]
 [connection signal="movement_stopped" from="GameManager" to="ParallaxBackground" method="_on_game_manager_movement_stopped"]
 [connection signal="movement_stopped" from="GameManager" to="pipe_handler" method="_on_game_manager_movement_stopped"]
+[connection signal="score_added" from="GameManager" to="CanvasLayer/Control/game_screen" method="_on_game_manager_score_added"]
 [connection signal="body_entered" from="ParallaxBackground/ground/Area2D" to="GameManager" method="_on_ground_body_entered"]
 [connection signal="body_entered" from="ParallaxBackground/ground/Area2D" to="bird" method="_on_ground_body_entered"]
 [connection signal="pipe_collision" from="pipe_handler" to="GameManager" method="_on_pipe_collision"]
 [connection signal="pipe_collision" from="pipe_handler" to="bird" method="_on_pipe_collision"]
+[connection signal="pipe_passed" from="pipe_handler" to="GameManager" method="_on_pipe_passed"]
 [connection signal="start_game" from="CanvasLayer/Control/start_screen" to="bird" method="_on_start_game"]
 [connection signal="start_game" from="CanvasLayer/Control/start_screen" to="pipe_handler" method="_on_start_game"]
+[connection signal="start_game" from="CanvasLayer/Control/start_screen" to="CanvasLayer/Control/game_screen" method="_on_start_screen_start_game"]
