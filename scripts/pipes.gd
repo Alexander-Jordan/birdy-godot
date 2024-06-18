@@ -10,6 +10,7 @@ var is_movement_stopped:bool = false
 
 signal screen_entered
 signal screen_exited
+signal pipe_passed
 signal pipe_collision
 
 func _ready():
@@ -29,3 +30,7 @@ func position_and_scale_pipes():
 
 func emit_pipe_collision():
 	pipe_collision.emit()
+
+func _on_pipe_edge_body_exited(body:Node2D):
+	if body is Bird:
+		pipe_passed.emit()

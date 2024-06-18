@@ -12,12 +12,13 @@ var last_spawn_position:Vector2 = Vector2.ZERO
 var rng:RandomNumberGenerator = RandomNumberGenerator.new()
 var is_movement_stopped:bool = false
 
+signal pipe_passed
 signal pipe_collision
 signal movement_stopped
 
 func init_spawn_positions():
 	var x_pos = screen_size.x + 0
-	var dist_between_positions:int = screen_size.y / (number_of_spawn_positions + 1)
+	var dist_between_positions:float = screen_size.y / (number_of_spawn_positions + 1)
 	for index in number_of_spawn_positions:
 		spawn_positions.append(Vector2(x_pos, dist_between_positions * (index + 1)))
 
@@ -31,6 +32,7 @@ func get_pipes_instance() -> Pipes:
 		# setup signal connections
 		pipes.screen_entered.connect(spawn_pipes)
 		pipes.screen_exited.connect(func(): pool.append(pipes))
+		pipes.pipe_passed.connect(func(): self.pipe_passed.emit())
 		pipes.pipe_collision.connect(func(): self.pipe_collision.emit())
 		movement_stopped.connect(func(): pipes.is_movement_stopped = true)
 		return pipes

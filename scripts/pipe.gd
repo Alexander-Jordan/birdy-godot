@@ -16,7 +16,6 @@ func _ready():
 func _on_body_entered(body: Node2D):
 	if body is Bird:
 		pipe_collision.emit()
-		print('bird hit')
 
 func position_and_scale_pipe():
 	var pixels_from_edge:float = global_position.y if type == 'Top' else screen_size.y - global_position.y
