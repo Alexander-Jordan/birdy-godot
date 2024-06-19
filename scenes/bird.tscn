@@ -1,7 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://djhxoy6ja30fs"]
+[gd_scene load_steps=13 format=3 uid="uid://djhxoy6ja30fs"]
 
 [ext_resource type="Script" path="res://scripts/bird.gd" id="1_dvkdq"]
 [ext_resource type="Texture2D" uid="uid://o3yawp4cbinv" path="res://assets/sprites/bird_spritesheet.png" id="1_lm7u2"]
+[ext_resource type="AudioStream" uid="uid://c0wg6ebb784o7" path="res://assets/audio/sfx/flap.mp3" id="2_wegtw"]
+[ext_resource type="AudioStream" uid="uid://c2xnmowyfxc8d" path="res://assets/audio/sfx/collide.wav" id="3_yox7x"]
+[ext_resource type="AudioStream" uid="uid://bfkvc0e4gows6" path="res://assets/audio/sfx/dead.wav" id="4_1lf76"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g5dd7"]
 size = Vector2(12, 7)
@@ -100,6 +103,9 @@ _data = {
 [node name="Bird" type="CharacterBody2D"]
 scale = Vector2(5, 5)
 script = ExtResource("1_dvkdq")
+audio_flap = ExtResource("2_wegtw")
+audio_collide = ExtResource("3_yox7x")
+audio_dead = ExtResource("4_1lf76")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.38419e-07, 1.5)
@@ -115,3 +121,7 @@ libraries = {
 "": SubResource("AnimationLibrary_431bk")
 }
 autoplay = "idle"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -8.0
+bus = &"sfx"

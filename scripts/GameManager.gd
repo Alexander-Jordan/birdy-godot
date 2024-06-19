@@ -1,6 +1,10 @@
 extends Node2D
 class_name GameManager
 
+@export var audio_point:AudioStream
+
+@onready var audio_stream_player = $AudioStreamPlayer
+
 var score:int = 0
 var is_movement_stopped:bool = false
 var is_game_over:bool = false
@@ -18,6 +22,8 @@ func _on_ground_body_entered(_body):
 func _on_pipe_passed():
 	score += 1
 	score_added.emit(score)
+	audio_stream_player.stream = audio_point
+	audio_stream_player.play()
 
 func _on_pipe_collision():
 	if not is_movement_stopped:
