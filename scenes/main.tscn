@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dp7iqge7542bm"]
+[gd_scene load_steps=20 format=3 uid="uid://dp7iqge7542bm"]
 
 [ext_resource type="PackedScene" uid="uid://djhxoy6ja30fs" path="res://scenes/bird.tscn" id="1_0s3gh"]
 [ext_resource type="FontFile" uid="uid://cfjc1xfowcrc" path="res://assets/fonts/retro_computer_personal_use.ttf" id="1_2uhya"]
@@ -9,6 +9,10 @@
 [ext_resource type="Script" path="res://scripts/pipe_handler.gd" id="3_c5oxv"]
 [ext_resource type="Texture2D" uid="uid://qy3g7wtx6ppv" path="res://assets/sprites/ground_sprite.png" id="4_8fvxo"]
 [ext_resource type="PackedScene" uid="uid://bomk2mnd3qpug" path="res://scenes/pipes.tscn" id="4_mfq41"]
+[ext_resource type="Texture2D" uid="uid://dfff1t5727a4p" path="res://assets/sprites/background_sky.png" id="5_gds6t"]
+[ext_resource type="Texture2D" uid="uid://0deulqyfdokq" path="res://assets/sprites/background_clouds.png" id="5_j0r0q"]
+[ext_resource type="Texture2D" uid="uid://1bc1vp7n2ddy" path="res://assets/sprites/background_greens.png" id="6_x74gr"]
+[ext_resource type="Texture2D" uid="uid://dwuxti35dkl8i" path="res://assets/sprites/background_trees.png" id="7_ekt7u"]
 [ext_resource type="Script" path="res://scripts/end_screen.gd" id="9_dqg7h"]
 [ext_resource type="Script" path="res://scripts/game_screen.gd" id="9_lovtg"]
 
@@ -33,6 +37,60 @@ audio_point = ExtResource("2_ccdgh")
 volume_db = -4.0
 bus = &"sfx"
 
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+script = ExtResource("2_ldoq3")
+speed = 3
+
+[node name="sky" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_scale = Vector2(0.01, 0.01)
+motion_mirroring = Vector2(720, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/sky"]
+texture_repeat = 2
+position = Vector2(360, 0)
+scale = Vector2(5, 5)
+texture = ExtResource("5_gds6t")
+offset = Vector2(0, 127.5)
+region_enabled = true
+region_rect = Rect2(0, 0, 144, 255)
+
+[node name="clouds" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(720, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/clouds"]
+texture_repeat = 2
+scale = Vector2(5, 5)
+texture = ExtResource("5_j0r0q")
+offset = Vector2(72.5, 127.5)
+region_enabled = true
+region_rect = Rect2(0, 0, 144, 255)
+
+[node name="greens" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(720, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/greens"]
+texture_repeat = 2
+scale = Vector2(5, 5)
+texture = ExtResource("6_x74gr")
+offset = Vector2(72.5, 127.5)
+region_enabled = true
+region_rect = Rect2(0, 0, 144, 255)
+
+[node name="trees" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_scale = Vector2(0.75, 0.75)
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/trees"]
+texture_repeat = 2
+position = Vector2(0, 560)
+scale = Vector2(5, 5)
+texture = ExtResource("7_ekt7u")
+offset = Vector2(144, 64)
+region_enabled = true
+region_rect = Rect2(0, 0, 288, 128)
+
 [node name="bird" parent="." instance=ExtResource("1_0s3gh")]
 position = Vector2(250, 640)
 
@@ -41,7 +99,7 @@ layer = 1
 script = ExtResource("2_ldoq3")
 
 [node name="ground" type="ParallaxLayer" parent="ParallaxBackground"]
-z_index = 1
+z_index = 10
 motion_mirroring = Vector2(80, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ground"]
@@ -157,6 +215,7 @@ text = "Restart"
 
 [connection signal="game_over" from="GameManager" to="CanvasLayer/Control/game_screen" method="_on_game_manager_game_over"]
 [connection signal="game_over" from="GameManager" to="CanvasLayer/Control/end_screen" method="_on_game_manager_game_over"]
+[connection signal="movement_stopped" from="GameManager" to="ParallaxBackground2" method="_on_game_manager_movement_stopped"]
 [connection signal="movement_stopped" from="GameManager" to="bird" method="_on_game_manager_movement_stopped"]
 [connection signal="movement_stopped" from="GameManager" to="ParallaxBackground" method="_on_game_manager_movement_stopped"]
 [connection signal="movement_stopped" from="GameManager" to="pipe_handler" method="_on_game_manager_movement_stopped"]
