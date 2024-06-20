@@ -2,8 +2,6 @@ extends ParallaxBackground
 
 @export_range(1, 6) var speed:int = 4
 
-@onready var ground_layer:ParallaxLayer = $ground
-
 var is_movement_stopped = false
 
 func _process(_delta):
