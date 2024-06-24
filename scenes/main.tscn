@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://dp7iqge7542bm"]
+[gd_scene load_steps=21 format=3 uid="uid://dp7iqge7542bm"]
 
 [ext_resource type="PackedScene" uid="uid://djhxoy6ja30fs" path="res://scenes/bird.tscn" id="1_0s3gh"]
 [ext_resource type="FontFile" uid="uid://cfjc1xfowcrc" path="res://assets/fonts/retro_computer_personal_use.ttf" id="1_2uhya"]
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_fnr07"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_jxhps"]
 [ext_resource type="AudioStream" uid="uid://cobxqfdmtym6w" path="res://assets/audio/sfx/point.wav" id="2_ccdgh"]
 [ext_resource type="Script" path="res://scripts/parallax_background.gd" id="2_ldoq3"]
 [ext_resource type="PackedScene" uid="uid://qn1ahnfaqivl" path="res://scenes/start_screen.tscn" id="2_yc65a"]
@@ -28,8 +29,9 @@ default_font = ExtResource("1_2uhya")
 default_font_size = 50
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_jxhps")
 
-[node name="GameManager" type="Node2D" parent="."]
+[node name="GameManager" type="Node2D" parent="." groups=["persist"]]
 script = ExtResource("1_fnr07")
 audio_point = ExtResource("2_ccdgh")
 
@@ -203,6 +205,18 @@ vertical_alignment = 1
 [node name="score" type="Label" parent="CanvasLayer/Control/end_screen/Control/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="best_score_label" type="Label" parent="CanvasLayer/Control/end_screen/Control/VBoxContainer"]
+layout_mode = 2
+text = "Best score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="best_score" type="Label" parent="CanvasLayer/Control/end_screen/Control/VBoxContainer"]
+layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
