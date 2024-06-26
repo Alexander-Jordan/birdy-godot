@@ -95,7 +95,6 @@ script = ExtResource("9_dqg7h")
 
 [node name="Control" type="Control" parent="CanvasLayer/Control/end_screen"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/end_screen/Control"]
@@ -133,11 +132,18 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="restart_button" type="Button" parent="CanvasLayer/Control/end_screen"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/end_screen"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
+
+[node name="restart_button" type="Button" parent="CanvasLayer/Control/end_screen/HBoxContainer"]
+layout_mode = 2
 text = "Restart"
+
+[node name="menu_button" type="Button" parent="CanvasLayer/Control/end_screen/HBoxContainer"]
+layout_mode = 2
+text = "Menu"
 
 [connection signal="game_over" from="GameManager" to="CanvasLayer/Control/game_screen" method="_on_game_manager_game_over"]
 [connection signal="game_over" from="GameManager" to="CanvasLayer/Control/end_screen" method="_on_game_manager_game_over"]

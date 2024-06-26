@@ -27,6 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_a0h17")
+bus_name = "sfx"
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/main_menu"]
 layout_mode = 2
