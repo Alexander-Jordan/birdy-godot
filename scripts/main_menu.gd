@@ -12,13 +12,23 @@ var is_sound_on = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	bus_index = AudioServer.get_bus_index(bus_name)
+	
+	is_sound_on = SaveSystem.settings_data.audio.sfx
+	set_sound()
+	
 	start_button.pressed.connect(load_main_level)
 	sound_button.pressed.connect(toggle_sound)
 
 func load_main_level():
 	get_tree().change_scene_to_file('res://scenes/main.tscn')
 
-func toggle_sound():
-	is_sound_on = !is_sound_on
+func set_sound():
 	sound_button.text = 'Sound on' if is_sound_on else 'Sound off'
 	AudioServer.set_bus_mute(bus_index, !is_sound_on)
+
+func toggle_sound():
+	is_sound_on = !is_sound_on
+	set_sound()
+	
+	SaveSystem.settings_data.audio.sfx = is_sound_on
+	SaveSystem.save_settings()
