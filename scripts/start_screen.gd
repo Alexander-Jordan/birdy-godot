@@ -4,7 +4,7 @@ var game_started:bool = false
 
 signal start_game
 
-func _unhandled_input(event):
+func _input(event):
 	if game_started:
 		return
 	
