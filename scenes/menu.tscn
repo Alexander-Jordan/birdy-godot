@@ -27,7 +27,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_a0h17")
-bus_name = "sfx"
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/main_menu"]
 layout_mode = 2
@@ -61,6 +60,11 @@ theme_override_constants/margin_bottom = 50
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/main_menu/settings_buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
+
+[node name="music_button" type="Button" parent="CanvasLayer/Control/main_menu/settings_buttons/HBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Music off"
 
 [node name="sfx_button" type="Button" parent="CanvasLayer/Control/main_menu/settings_buttons/HBoxContainer"]
 layout_mode = 2

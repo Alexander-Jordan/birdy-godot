@@ -6,7 +6,7 @@ const SETTINGS_FILE_PATH = 'user://SETTINGS.cfg'
 const SETTINGS_DEFAULT:Dictionary = {
 	'audio': {
 		'master': true,
-		'music': true,
+		'music': false,
 		'sfx': true,
 	}
 }
@@ -64,5 +64,3 @@ func save_settings():
 	
 	# finally save to file
 	config.save(SETTINGS_FILE_PATH)
-	
-	print(settings_data)
