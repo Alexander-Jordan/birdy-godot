@@ -42,7 +42,7 @@ func _on_pipe_collision():
 		audio_stream_player_2D.stream = audio_collide
 		audio_stream_player_2D.play()
 
-func _on_ground_body_entered(_body):
+func _on_ground_collision():
 	if not animation_player.current_animation == 'dead':
 		animation_player.play('dead')
 		audio_stream_player_2D.stream = audio_dead

@@ -39,7 +39,7 @@ func _on_pipe_collision():
 	if not is_movement_stopped:
 		movement_stopped.emit()
 
-func _on_ground_body_entered(_body):
+func _on_ground_collision():
 	if not is_movement_stopped: 
 		movement_stopped.emit()
 	if not is_game_over:
