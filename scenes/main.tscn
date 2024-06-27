@@ -1,30 +1,61 @@
-[gd_scene load_steps=14 format=3 uid="uid://dp7iqge7542bm"]
+[gd_scene load_steps=23 format=3 uid="uid://dp7iqge7542bm"]
 
 [ext_resource type="PackedScene" uid="uid://djhxoy6ja30fs" path="res://scenes/bird.tscn" id="1_0s3gh"]
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_fnr07"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_jxhps"]
 [ext_resource type="AudioStream" uid="uid://cobxqfdmtym6w" path="res://assets/audio/sfx/point.wav" id="2_ccdgh"]
 [ext_resource type="PackedScene" uid="uid://qn1ahnfaqivl" path="res://scenes/start_screen.tscn" id="2_yc65a"]
+[ext_resource type="AudioStream" uid="uid://bdfaas4o0p5fw" path="res://assets/audio/music/level-ix-211054.mp3" id="3_347sc"]
 [ext_resource type="Script" path="res://scripts/pipe_handler.gd" id="3_c5oxv"]
 [ext_resource type="PackedScene" uid="uid://qj3nsj80xvr5" path="res://scenes/parallax_background.tscn" id="4_1upqk"]
 [ext_resource type="PackedScene" uid="uid://bomk2mnd3qpug" path="res://scenes/pipes.tscn" id="4_mfq41"]
 [ext_resource type="Theme" uid="uid://cxlxep458s4bf" path="res://base_theme.tres" id="8_uuran"]
 [ext_resource type="Script" path="res://scripts/end_screen.gd" id="9_dqg7h"]
 [ext_resource type="Script" path="res://scripts/game_screen.gd" id="9_lovtg"]
+[ext_resource type="Texture2D" uid="uid://btkunpevs8y88" path="res://assets/sprites/buttons.png" id="12_rrtnt"]
+[ext_resource type="AudioStream" uid="uid://kngsl673hw8l" path="res://assets/audio/sfx/button_click.wav" id="13_chgho"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kirdg"]
 normal = Vector2(0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_t3rog"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_csc1e"]
+atlas = ExtResource("12_rrtnt")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6d0i7"]
+atlas = ExtResource("12_rrtnt")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmctv"]
+atlas = ExtResource("12_rrtnt")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muuvi"]
+atlas = ExtResource("12_rrtnt")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5ugf"]
+atlas = ExtResource("12_rrtnt")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20uh3"]
+atlas = ExtResource("12_rrtnt")
+region = Rect2(16, 48, 16, 16)
+
 [node name="main" type="Node2D"]
 script = ExtResource("1_jxhps")
 
 [node name="GameManager" type="Node2D" parent="." groups=["persist"]]
 script = ExtResource("1_fnr07")
-audio_point = ExtResource("2_ccdgh")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GameManager"]
+[node name="music_player" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("3_347sc")
+bus = &"music"
+
+[node name="point_audio_player" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("2_ccdgh")
 volume_db = -4.0
 bus = &"sfx"
 
@@ -137,13 +168,25 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 
-[node name="restart_button" type="Button" parent="CanvasLayer/Control/end_screen/HBoxContainer"]
+[node name="restart_button" type="TextureButton" parent="CanvasLayer/Control/end_screen/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-text = "Restart"
+texture_normal = SubResource("AtlasTexture_csc1e")
+texture_pressed = SubResource("AtlasTexture_6d0i7")
+texture_disabled = SubResource("AtlasTexture_jmctv")
+stretch_mode = 5
 
-[node name="menu_button" type="Button" parent="CanvasLayer/Control/end_screen/HBoxContainer"]
+[node name="menu_button" type="TextureButton" parent="CanvasLayer/Control/end_screen/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-text = "Menu"
+texture_normal = SubResource("AtlasTexture_muuvi")
+texture_pressed = SubResource("AtlasTexture_p5ugf")
+texture_disabled = SubResource("AtlasTexture_20uh3")
+stretch_mode = 5
+flip_h = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Control/end_screen"]
+stream = ExtResource("13_chgho")
 
 [connection signal="game_over" from="GameManager" to="CanvasLayer/Control/game_screen" method="_on_game_manager_game_over"]
 [connection signal="game_over" from="GameManager" to="CanvasLayer/Control/end_screen" method="_on_game_manager_game_over"]
@@ -156,6 +199,7 @@ text = "Menu"
 [connection signal="pipe_collision" from="pipe_handler" to="GameManager" method="_on_pipe_collision"]
 [connection signal="pipe_collision" from="pipe_handler" to="bird" method="_on_pipe_collision"]
 [connection signal="pipe_passed" from="pipe_handler" to="GameManager" method="_on_pipe_passed"]
+[connection signal="start_game" from="CanvasLayer/Control/start_screen" to="GameManager" method="_on_start_game"]
 [connection signal="start_game" from="CanvasLayer/Control/start_screen" to="bird" method="_on_start_game"]
 [connection signal="start_game" from="CanvasLayer/Control/start_screen" to="pipe_handler" method="_on_start_game"]
 [connection signal="start_game" from="CanvasLayer/Control/start_screen" to="CanvasLayer/Control/game_screen" method="_on_start_screen_start_game"]

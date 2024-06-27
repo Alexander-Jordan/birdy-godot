@@ -1,9 +1,8 @@
 extends Node2D
 class_name GameManager
 
-@export var audio_point:AudioStream
-
-@onready var audio_stream_player = $AudioStreamPlayer
+@onready var music_player = $music_player
+@onready var point_audio_player = $point_audio_player
 
 var game_stats_data:GameStatsData = GameStatsData.new()
 var save_file_name:String = 'game_stats_data.tres'
@@ -22,6 +21,9 @@ func load_data(base_path:String):
 	if ResourceLoader.exists(base_path + save_file_name):
 		game_stats_data = ResourceLoader.load(base_path + save_file_name).duplicate(true)
 
+func _on_start_game():
+	music_player.play()
+
 func _on_pipe_passed():
 	# increment points
 	score += 1
@@ -31,17 +33,17 @@ func _on_pipe_passed():
 	if score > game_stats_data.best_score:
 		game_stats_data.best_score = score
 	
-	# play audio
-	audio_stream_player.stream = audio_point
-	audio_stream_player.play()
+	point_audio_player.play()
 
 func _on_pipe_collision():
 	if not is_movement_stopped:
+		music_player.stop()
 		movement_stopped.emit()
 
 func _on_ground_collision():
 	if not is_movement_stopped: 
 		movement_stopped.emit()
 	if not is_game_over:
+		music_player.stop()
 		game_over.emit(score, game_stats_data.best_score)
 		SaveSystem.save_persisted_nodes()
