@@ -1,7 +1,7 @@
 extends VBoxContainer
 
-@onready var restart_button:Button = $HBoxContainer/restart_button
-@onready var menu_button:Button = $HBoxContainer/menu_button
+@onready var restart_button:TextureButton = $HBoxContainer/restart_button
+@onready var menu_button:TextureButton = $HBoxContainer/menu_button
 @onready var score_label = $Control/VBoxContainer/score
 @onready var best_score_label = $Control/VBoxContainer/best_score
 
