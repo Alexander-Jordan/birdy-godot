@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://duk810egukxlk"]
+[gd_scene load_steps=19 format=3 uid="uid://duk810egukxlk"]
 
 [ext_resource type="PackedScene" uid="uid://qj3nsj80xvr5" path="res://scenes/parallax_background.tscn" id="1_fw5ay"]
+[ext_resource type="AudioStream" uid="uid://bdfaas4o0p5fw" path="res://assets/audio/music/level-ix-211054.mp3" id="2_3pvqe"]
 [ext_resource type="Theme" uid="uid://cxlxep458s4bf" path="res://base_theme.tres" id="2_8bgur"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="3_a0h17"]
 [ext_resource type="Texture2D" uid="uid://btkunpevs8y88" path="res://assets/sprites/buttons.png" id="4_c7fm2"]
@@ -57,6 +58,12 @@ region = Rect2(16, 16, 16, 16)
 [node name="menu" type="Node2D"]
 
 [node name="parallax_background" parent="." instance=ExtResource("1_fw5ay")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3pvqe")
+volume_db = -12.0
+autoplay = true
+bus = &"music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -124,7 +131,6 @@ size_flags_vertical = 4
 [node name="music_button" type="TextureButton" parent="CanvasLayer/Control/main_menu/settings_buttons/HBoxContainer"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-disabled = true
 toggle_mode = true
 texture_normal = SubResource("AtlasTexture_g67x5")
 texture_pressed = SubResource("AtlasTexture_q2a5m")
