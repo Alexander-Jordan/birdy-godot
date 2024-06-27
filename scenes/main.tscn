@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dp7iqge7542bm"]
+[gd_scene load_steps=22 format=3 uid="uid://dp7iqge7542bm"]
 
 [ext_resource type="PackedScene" uid="uid://djhxoy6ja30fs" path="res://scenes/bird.tscn" id="1_0s3gh"]
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_fnr07"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/end_screen.gd" id="9_dqg7h"]
 [ext_resource type="Script" path="res://scripts/game_screen.gd" id="9_lovtg"]
 [ext_resource type="Texture2D" uid="uid://btkunpevs8y88" path="res://assets/sprites/buttons.png" id="12_rrtnt"]
+[ext_resource type="AudioStream" uid="uid://kngsl673hw8l" path="res://assets/audio/sfx/button_click.wav" id="13_chgho"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kirdg"]
 normal = Vector2(0, 1)
@@ -178,6 +179,9 @@ texture_pressed = SubResource("AtlasTexture_p5ugf")
 texture_disabled = SubResource("AtlasTexture_20uh3")
 stretch_mode = 5
 flip_h = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Control/end_screen"]
+stream = ExtResource("13_chgho")
 
 [connection signal="game_over" from="GameManager" to="CanvasLayer/Control/game_screen" method="_on_game_manager_game_over"]
 [connection signal="game_over" from="GameManager" to="CanvasLayer/Control/end_screen" method="_on_game_manager_game_over"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://duk810egukxlk"]
+[gd_scene load_steps=18 format=3 uid="uid://duk810egukxlk"]
 
 [ext_resource type="PackedScene" uid="uid://qj3nsj80xvr5" path="res://scenes/parallax_background.tscn" id="1_fw5ay"]
 [ext_resource type="Theme" uid="uid://cxlxep458s4bf" path="res://base_theme.tres" id="2_8bgur"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="3_a0h17"]
 [ext_resource type="Texture2D" uid="uid://btkunpevs8y88" path="res://assets/sprites/buttons.png" id="4_c7fm2"]
+[ext_resource type="AudioStream" uid="uid://kngsl673hw8l" path="res://assets/audio/sfx/button_click.wav" id="5_aavpl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_74y18"]
 atlas = ExtResource("4_c7fm2")
@@ -138,3 +139,7 @@ texture_normal = SubResource("AtlasTexture_ni0l6")
 texture_pressed = SubResource("AtlasTexture_qrdl4")
 texture_disabled = SubResource("AtlasTexture_goaxs")
 stretch_mode = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Control/main_menu"]
+stream = ExtResource("5_aavpl")
+bus = &"sfx"
