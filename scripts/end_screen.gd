@@ -7,7 +7,7 @@ extends VBoxContainer
 @onready var best_score_label = $Control/VBoxContainer/best_score
 @onready var audio_stream_player = $AudioStreamPlayer
 
-const bronze_medal:int = 2
+const bronze_medal:int = 10
 const silver_medal:int = 25
 const gold_medal:int = 50
 const platinum_medal:int = 100
