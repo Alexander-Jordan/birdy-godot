@@ -52,7 +52,6 @@ script = ExtResource("1_fnr07")
 
 [node name="music_player" type="AudioStreamPlayer" parent="GameManager"]
 stream = ExtResource("3_347sc")
-volume_db = -8.0
 bus = &"music"
 
 [node name="point_audio_player" type="AudioStreamPlayer" parent="GameManager"]
