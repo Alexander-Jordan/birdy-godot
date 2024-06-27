@@ -21,6 +21,6 @@ func load_menu():
 	get_tree().change_scene_to_file('res://scenes/menu.tscn')
 
 func _on_game_manager_game_over(total_score:int, best_score:int):
-	score_label.text = str(total_score)
-	best_score_label.text = str(best_score)
+	score_label.text = 'Score: %s' % str(total_score)
+	best_score_label.text = 'Best: %s' % str(best_score)
 	visible = true
