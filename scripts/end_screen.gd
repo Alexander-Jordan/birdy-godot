@@ -12,11 +12,6 @@ extends VBoxContainer
 @onready var best_score_label:Label = $Control/VBoxContainer/best_score
 @onready var audio_stream_player:AudioStreamPlayer = $AudioStreamPlayer
 
-const bronze_medal:int = 10
-const silver_medal:int = 25
-const gold_medal:int = 50
-const platinum_medal:int = 100
-
 func _ready():
 	restart_button.pressed.connect(restart_game)
 	menu_button.pressed.connect(load_menu)
@@ -31,17 +26,17 @@ func load_menu():
 	# for now, just change to the menu scene
 	get_tree().change_scene_to_file('res://scenes/menu.tscn')
 
-func _on_game_manager_game_over(total_score:int, best_score:int):
+func _on_game_manager_game_over(total_score:int, medal:int, best_score:int):
 	score_label.text = 'Score: %s' % str(total_score)
 	
 	var medal_texture:Texture = Texture.new()
-	if total_score >= bronze_medal:
+	if medal == 1:
 		medal_texture = bronze_texture
-	if total_score >= silver_medal:
+	if medal == 2:
 		medal_texture = silver_texture
-	if total_score >= gold_medal:
+	if medal == 3:
 		medal_texture = gold_texture
-	if total_score >= platinum_medal:
+	if medal == 4:
 		medal_texture = platinum_texture
 	medal_texture_rect.texture = medal_texture
 	
