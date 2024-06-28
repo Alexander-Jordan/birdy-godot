@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dp7iqge7542bm"]
+[gd_scene load_steps=27 format=3 uid="uid://dp7iqge7542bm"]
 
 [ext_resource type="PackedScene" uid="uid://djhxoy6ja30fs" path="res://scenes/bird.tscn" id="1_0s3gh"]
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_fnr07"]
@@ -13,7 +13,11 @@
 [ext_resource type="Script" path="res://scripts/end_screen.gd" id="9_dqg7h"]
 [ext_resource type="Script" path="res://scripts/game_screen.gd" id="9_lovtg"]
 [ext_resource type="Texture2D" uid="uid://btkunpevs8y88" path="res://assets/sprites/buttons.png" id="12_rrtnt"]
+[ext_resource type="Texture2D" uid="uid://bfo7dhrowq268" path="res://assets/sprites/medal_bronze.png" id="13_achk4"]
 [ext_resource type="AudioStream" uid="uid://kngsl673hw8l" path="res://assets/audio/sfx/button_click.wav" id="13_chgho"]
+[ext_resource type="Texture2D" uid="uid://4wdmhc02c86x" path="res://assets/sprites/medal_silver.png" id="14_sonal"]
+[ext_resource type="Texture2D" uid="uid://2wegoa1jvcfy" path="res://assets/sprites/medal_gold.png" id="15_1h700"]
+[ext_resource type="Texture2D" uid="uid://c0bmntlfff4qd" path="res://assets/sprites/medal_platinum.png" id="16_fegvh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kirdg"]
 normal = Vector2(0, 1)
@@ -123,6 +127,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_dqg7h")
+bronze_texture = ExtResource("13_achk4")
+silver_texture = ExtResource("14_sonal")
+gold_texture = ExtResource("15_1h700")
+platinum_texture = ExtResource("16_fegvh")
 
 [node name="Control" type="Control" parent="CanvasLayer/Control/end_screen"]
 layout_mode = 2
@@ -137,16 +145,15 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 
+[node name="medal" type="TextureRect" parent="CanvasLayer/Control/end_screen/Control/VBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+stretch_mode = 5
+
 [node name="score" type="Label" parent="CanvasLayer/Control/end_screen/Control/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="medal" type="Label" parent="CanvasLayer/Control/end_screen/Control/VBoxContainer"]
-layout_mode = 2
-text = "Medal: None"
 horizontal_alignment = 1
 vertical_alignment = 1
 

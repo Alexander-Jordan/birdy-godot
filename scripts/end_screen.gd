@@ -1,11 +1,16 @@
 extends VBoxContainer
 
+@export var bronze_texture:Texture
+@export var silver_texture:Texture
+@export var gold_texture:Texture
+@export var platinum_texture:Texture
+
 @onready var restart_button:TextureButton = $HBoxContainer/restart_button
 @onready var menu_button:TextureButton = $HBoxContainer/menu_button
-@onready var score_label = $Control/VBoxContainer/score
-@onready var medal_label = $Control/VBoxContainer/medal
-@onready var best_score_label = $Control/VBoxContainer/best_score
-@onready var audio_stream_player = $AudioStreamPlayer
+@onready var score_label:Label = $Control/VBoxContainer/score
+@onready var medal_texture_rect:TextureRect = $Control/VBoxContainer/medal
+@onready var best_score_label:Label = $Control/VBoxContainer/best_score
+@onready var audio_stream_player:AudioStreamPlayer = $AudioStreamPlayer
 
 const bronze_medal:int = 10
 const silver_medal:int = 25
@@ -29,16 +34,16 @@ func load_menu():
 func _on_game_manager_game_over(total_score:int, best_score:int):
 	score_label.text = 'Score: %s' % str(total_score)
 	
-	var medal:String = 'none'
+	var medal_texture:Texture = Texture.new()
 	if total_score >= bronze_medal:
-		medal = 'bronze'
+		medal_texture = bronze_texture
 	if total_score >= silver_medal:
-		medal = 'silver'
+		medal_texture = silver_texture
 	if total_score >= gold_medal:
-		medal = 'gold'
+		medal_texture = gold_texture
 	if total_score >= platinum_medal:
-		medal = 'platinum'
-	medal_label.text = 'Medal: %s' % medal
+		medal_texture = platinum_texture
+	medal_texture_rect.texture = medal_texture
 	
 	best_score_label.text = 'Best: %s' % str(best_score)
 	visible = true
