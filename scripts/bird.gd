@@ -13,6 +13,8 @@ var gravity = ProjectSettings.get_setting('physics/2d/default_gravity')
 var flap_speed = -1000
 var is_movement_stopped:bool = false
 
+signal flap
+
 func _physics_process(delta):
 	if not game_started:
 		return
@@ -20,6 +22,7 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	
 	if not is_movement_stopped and Input.is_action_just_pressed('flap'):
+		flap.emit()
 		velocity.y = flap_speed
 		
 		animation_player.play('flap')

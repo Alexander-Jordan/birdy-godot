@@ -22,11 +22,13 @@ func load_data(base_path:String):
 		game_stats_data = ResourceLoader.load(base_path + save_file_name).duplicate(true)
 
 func _on_start_game():
+	game_stats_data.games_count += 1
 	game_stats_data.last_score = 0
 	music_player.play()
 
 func _on_pipe_passed():
 	# increment points
+	game_stats_data.pipes_passed += 1
 	game_stats_data.last_score += 1
 	score_added.emit(game_stats_data.last_score)
 	point_audio_player.play()
@@ -42,4 +44,11 @@ func _on_ground_collision():
 	if not is_game_over:
 		music_player.stop()
 		game_over.emit(game_stats_data.last_score, game_stats_data.last_medal, game_stats_data.best_score)
+		
+		if game_stats_data.last_score == 0:
+			game_stats_data.deaths_witch_zero_points += 1
+		
 		SaveSystem.save_persisted_nodes()
+
+func _on_bird_flap():
+	game_stats_data.flaps += 1

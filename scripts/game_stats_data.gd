@@ -6,6 +6,10 @@ const point_for_silver_medal:int = 25
 const point_for_gold_medal:int = 50
 const point_for_platinum_medal:int = 100
 
+@export var games_count:int = 0
+@export var flaps:int = 0
+@export var deaths_witch_zero_points:int = 0
+@export var pipes_passed:int = 0
 @export var last_score:int = 0 :
 	set(value):
 		last_score = value

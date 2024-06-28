@@ -196,6 +196,7 @@ stream = ExtResource("13_chgho")
 [connection signal="score_added" from="GameManager" to="CanvasLayer/Control/game_screen" method="_on_game_manager_score_added"]
 [connection signal="ground_collision" from="parallax_background" to="GameManager" method="_on_ground_collision"]
 [connection signal="ground_collision" from="parallax_background" to="bird" method="_on_ground_collision"]
+[connection signal="flap" from="bird" to="GameManager" method="_on_bird_flap"]
 [connection signal="pipe_collision" from="pipe_handler" to="GameManager" method="_on_pipe_collision"]
 [connection signal="pipe_collision" from="pipe_handler" to="bird" method="_on_pipe_collision"]
 [connection signal="pipe_passed" from="pipe_handler" to="GameManager" method="_on_pipe_passed"]
