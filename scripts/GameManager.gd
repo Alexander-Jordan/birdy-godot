@@ -36,6 +36,6 @@ func _on_ground_collision():
 		game_over.emit()
 		
 		if SaveSystem.game_stats_data.last_score == 0:
-			SaveSystem.game_stats_data.deaths_witch_zero_points += 1
+			SaveSystem.game_stats_data.deaths_with_zero_points += 1
 		
 		SaveSystem.save_data()

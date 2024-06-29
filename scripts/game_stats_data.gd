@@ -8,7 +8,7 @@ const point_for_platinum_medal:int = 100
 
 @export var games_count:int = 0
 @export var flaps:int = 0
-@export var deaths_witch_zero_points:int = 0
+@export var deaths_with_zero_points:int = 0
 @export var pipes_passed:int = 0
 @export var last_score:int = 0 :
 	set(value):
@@ -43,17 +43,17 @@ func set_last_medal():
 func add_medal():
 	if self.last_medal == 1:
 		if bronze_count == 0:
-			bronze_first = Time.get_datetime_string_from_system()
+			bronze_first = Time.get_date_string_from_system()
 		bronze_count += 1
 	if self.last_medal == 2:
 		if silver_count == 0:
-			silver_first = Time.get_datetime_string_from_system()
+			silver_first = Time.get_date_string_from_system()
 		silver_count += 1
 	if self.last_medal == 3:
 		if gold_count == 0:
-			gold_first = Time.get_datetime_string_from_system()
+			gold_first = Time.get_date_string_from_system()
 		gold_count += 1
 	if self.last_medal == 4:
 		if platinum_count == 0:
-			platinum_first = Time.get_datetime_string_from_system()
+			platinum_first = Time.get_date_string_from_system()
 		platinum_count += 1
