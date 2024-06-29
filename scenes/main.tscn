@@ -1,8 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://dp7iqge7542bm"]
+[gd_scene load_steps=26 format=3 uid="uid://dp7iqge7542bm"]
 
 [ext_resource type="PackedScene" uid="uid://djhxoy6ja30fs" path="res://scenes/bird.tscn" id="1_0s3gh"]
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_fnr07"]
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_jxhps"]
 [ext_resource type="AudioStream" uid="uid://cobxqfdmtym6w" path="res://assets/audio/sfx/point.wav" id="2_ccdgh"]
 [ext_resource type="PackedScene" uid="uid://qn1ahnfaqivl" path="res://scenes/start_screen.tscn" id="2_yc65a"]
 [ext_resource type="AudioStream" uid="uid://bdfaas4o0p5fw" path="res://assets/audio/music/level-ix-211054.mp3" id="3_347sc"]
@@ -49,9 +48,8 @@ atlas = ExtResource("12_rrtnt")
 region = Rect2(16, 48, 16, 16)
 
 [node name="main" type="Node2D"]
-script = ExtResource("1_jxhps")
 
-[node name="GameManager" type="Node2D" parent="." groups=["persist"]]
+[node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_fnr07")
 
 [node name="music_player" type="AudioStreamPlayer" parent="GameManager"]
@@ -127,10 +125,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_dqg7h")
-bronze_texture = ExtResource("13_achk4")
-silver_texture = ExtResource("14_sonal")
-gold_texture = ExtResource("15_1h700")
-platinum_texture = ExtResource("16_fegvh")
+medal_textures = Array[Texture]([null, ExtResource("13_achk4"), ExtResource("14_sonal"), ExtResource("15_1h700"), ExtResource("16_fegvh")])
 
 [node name="Control" type="Control" parent="CanvasLayer/Control/end_screen"]
 layout_mode = 2
@@ -196,7 +191,6 @@ stream = ExtResource("13_chgho")
 [connection signal="score_added" from="GameManager" to="CanvasLayer/Control/game_screen" method="_on_game_manager_score_added"]
 [connection signal="ground_collision" from="parallax_background" to="GameManager" method="_on_ground_collision"]
 [connection signal="ground_collision" from="parallax_background" to="bird" method="_on_ground_collision"]
-[connection signal="flap" from="bird" to="GameManager" method="_on_bird_flap"]
 [connection signal="pipe_collision" from="pipe_handler" to="GameManager" method="_on_pipe_collision"]
 [connection signal="pipe_collision" from="pipe_handler" to="bird" method="_on_pipe_collision"]
 [connection signal="pipe_passed" from="pipe_handler" to="GameManager" method="_on_pipe_passed"]

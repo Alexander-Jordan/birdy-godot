@@ -5,8 +5,8 @@ extends VBoxContainer
 func _on_start_screen_start_game():
 	visible = true
 
-func _on_game_manager_score_added(total_score:int):
-	points_label.text = str(total_score)
+func _on_game_manager_score_added():
+	points_label.text = str(SaveSystem.game_stats_data.last_score)
 
-func _on_game_manager_game_over(_total_score:int, _medal:int, _best_score:int):
+func _on_game_manager_game_over():
 	visible = false

@@ -1,7 +1,17 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cxlxep458s4bf"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cxlxep458s4bf"]
 
 [ext_resource type="FontFile" uid="uid://cfjc1xfowcrc" path="res://assets/fonts/retro_computer_personal_use.ttf" id="1_ddxlq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nqmi"]
+bg_color = Color(0.301961, 0.172549, 0.172549, 1)
+expand_margin_left = 10.0
+expand_margin_top = 50.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
 
 [resource]
 default_font = ExtResource("1_ddxlq")
 default_font_size = 50
+Window/constants/close_v_offset = 33
+Window/constants/title_height = 60
+Window/styles/embedded_border = SubResource("StyleBoxFlat_0nqmi")

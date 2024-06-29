@@ -1,6 +1,7 @@
 extends Node
 
 const SAVE_FOLDER_PATH = 'user://save/'
+const SAVE_FILE_NAME = 'game_stats_data.tres'
 const SETTINGS_FILE_PATH = 'user://SETTINGS.cfg'
 
 const SETTINGS_DEFAULT:Dictionary = {
@@ -11,28 +12,29 @@ const SETTINGS_DEFAULT:Dictionary = {
 	}
 }
 
+var game_stats_data:GameStatsData = GameStatsData.new()
 var settings_data:Dictionary = {}
 
 func _ready():
+	if !DirAccess.dir_exists_absolute(SAVE_FOLDER_PATH):
+		DirAccess.make_dir_absolute(SAVE_FOLDER_PATH)
+	load_data()
 	load_settings()
-	DirAccess.make_dir_absolute(SAVE_FOLDER_PATH)
 
-func persist_nodes(should_load:bool = false):
-	var nodes = get_tree().get_nodes_in_group('persist')
-	var persist_function_name:String = 'load_data' if should_load else 'save_data'
-	
-	for node in nodes:
-		if !node.has_method(persist_function_name):
-			print('persistent node "' + node.name + '" is missing a ' + persist_function_name + ' function, skipped')
-			continue
-		
-		node.call(persist_function_name, SAVE_FOLDER_PATH)
+func _notification(what):
+	# make sure to always save before closing down the game
+	# NOTIFICATION_WM_GO_BACK_REQUEST is used for an android back-button
+	if what == NOTIFICATION_WM_CLOSE_REQUEST or what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		save_data()
+		get_tree().quit()
 
-func save_persisted_nodes():
-	persist_nodes()
+func save_data():
+	game_stats_data.add_medal()
+	ResourceSaver.save(game_stats_data, SAVE_FOLDER_PATH + SAVE_FILE_NAME)
 
-func load_persisted_nodes():
-	persist_nodes(true)
+func load_data():
+	if ResourceLoader.exists(SAVE_FOLDER_PATH + SAVE_FILE_NAME):
+		game_stats_data = ResourceLoader.load(SAVE_FOLDER_PATH + SAVE_FILE_NAME).duplicate(true)
 
 func load_settings():
 	# create new ConfigFile object
