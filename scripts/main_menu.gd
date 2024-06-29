@@ -5,6 +5,7 @@ extends VBoxContainer
 @onready var sfx_button:TextureButton = $settings_buttons/HBoxContainer/sfx_button
 @onready var music_button:TextureButton = $settings_buttons/HBoxContainer/music_button
 @onready var audio_stream_player:AudioStreamPlayer = $AudioStreamPlayer
+@onready var popup = $stats_popup
 
 var sfx_bus_index:int
 var music_bus_index:int
@@ -17,6 +18,7 @@ func _ready():
 	AudioServer.set_bus_mute(sfx_bus_index, !SaveSystem.settings_data.audio.sfx)
 	
 	start_button.pressed.connect(load_main_level)
+	stats_button.pressed.connect(func(): popup.visible = true)
 	music_button.toggled.connect(toggle_music)
 	sfx_button.toggled.connect(toggle_sfx)
 	

@@ -20,6 +20,7 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	
 	if not is_movement_stopped and Input.is_action_just_pressed('flap'):
+		SaveSystem.game_stats_data.flaps += 1
 		velocity.y = flap_speed
 		
 		animation_player.play('flap')

@@ -1,9 +1,6 @@
 extends VBoxContainer
 
-@export var bronze_texture:Texture
-@export var silver_texture:Texture
-@export var gold_texture:Texture
-@export var platinum_texture:Texture
+@export var medal_textures:Array[Texture]
 
 @onready var restart_button:TextureButton = $HBoxContainer/restart_button
 @onready var menu_button:TextureButton = $HBoxContainer/menu_button
@@ -26,19 +23,10 @@ func load_menu():
 	# for now, just change to the menu scene
 	get_tree().change_scene_to_file('res://scenes/menu.tscn')
 
-func _on_game_manager_game_over(total_score:int, medal:int, best_score:int):
-	score_label.text = 'Score: %s' % str(total_score)
+func _on_game_manager_game_over():
+	score_label.text = 'Score: %s' % str(SaveSystem.game_stats_data.last_score)
 	
-	var medal_texture:Texture = Texture.new()
-	if medal == 1:
-		medal_texture = bronze_texture
-	if medal == 2:
-		medal_texture = silver_texture
-	if medal == 3:
-		medal_texture = gold_texture
-	if medal == 4:
-		medal_texture = platinum_texture
-	medal_texture_rect.texture = medal_texture
+	medal_texture_rect.texture = medal_textures[SaveSystem.game_stats_data.last_medal]
 	
-	best_score_label.text = 'Best: %s' % str(best_score)
+	best_score_label.text = 'Best: %s' % str(SaveSystem.game_stats_data.best_score)
 	visible = true

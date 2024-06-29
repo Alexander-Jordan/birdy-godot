@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://duk810egukxlk"]
+[gd_scene load_steps=20 format=3 uid="uid://duk810egukxlk"]
 
 [ext_resource type="PackedScene" uid="uid://qj3nsj80xvr5" path="res://scenes/parallax_background.tscn" id="1_fw5ay"]
 [ext_resource type="AudioStream" uid="uid://bdfaas4o0p5fw" path="res://assets/audio/music/level-ix-211054.mp3" id="2_3pvqe"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="3_a0h17"]
 [ext_resource type="Texture2D" uid="uid://btkunpevs8y88" path="res://assets/sprites/buttons.png" id="4_c7fm2"]
 [ext_resource type="AudioStream" uid="uid://kngsl673hw8l" path="res://assets/audio/sfx/button_click.wav" id="5_aavpl"]
+[ext_resource type="PackedScene" uid="uid://bmuylro0wusrx" path="res://scenes/stats_popup.tscn" id="7_83q1p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_74y18"]
 atlas = ExtResource("4_c7fm2")
@@ -110,7 +111,6 @@ stretch_mode = 5
 [node name="stats_button" type="TextureButton" parent="CanvasLayer/Control/main_menu/main_buttons"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-disabled = true
 texture_normal = SubResource("AtlasTexture_fdhd1")
 texture_pressed = SubResource("AtlasTexture_8vooh")
 texture_disabled = SubResource("AtlasTexture_fs3x6")
@@ -149,3 +149,6 @@ stretch_mode = 5
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Control/main_menu"]
 stream = ExtResource("5_aavpl")
 bus = &"sfx"
+
+[node name="stats_popup" parent="CanvasLayer/Control/main_menu" instance=ExtResource("7_83q1p")]
+visible = false
