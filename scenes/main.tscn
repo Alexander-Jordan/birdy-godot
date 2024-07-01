@@ -142,6 +142,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 
 [node name="medal" type="TextureRect" parent="CanvasLayer/Control/end_screen/Control/VBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 stretch_mode = 5

@@ -7,7 +7,7 @@ const SETTINGS_FILE_PATH = 'user://SETTINGS.cfg'
 const SETTINGS_DEFAULT:Dictionary = {
 	'audio': {
 		'master': true,
-		'music': false,
+		'music': true,
 		'sfx': true,
 	}
 }

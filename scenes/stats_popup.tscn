@@ -81,10 +81,12 @@ horizontal_alignment = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/bronze"]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 2
 texture = ExtResource("3_475ro")
 expand_mode = 3
+stretch_mode = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/bronze"]
 layout_mode = 2
@@ -122,6 +124,7 @@ horizontal_alignment = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/silver"]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 2
 texture = ExtResource("4_qch5g")
@@ -161,6 +164,7 @@ horizontal_alignment = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/gold"]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 2
 texture = ExtResource("5_ive30")
@@ -200,6 +204,7 @@ horizontal_alignment = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/platinum"]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 2
 texture = ExtResource("6_4w6s8")
