@@ -32,5 +32,5 @@ func emit_pipe_collision():
 	pipe_collision.emit()
 
 func _on_pipe_edge_body_exited(body:Node2D):
-	if body is Bird:
+	if body is Bird and !is_movement_stopped:
 		pipe_passed.emit()

@@ -57,3 +57,5 @@ func add_medal():
 		if platinum_count == 0:
 			platinum_first = Time.get_date_string_from_system()
 		platinum_count += 1
+	# set last medal to none after adding the medal
+	self.last_medal = 0
