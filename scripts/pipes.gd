@@ -1,7 +1,7 @@
 extends Node2D
 class_name Pipes
 
-@export_range(1, 6) var speed:int = 4
+@export_range(1, 6) var speed:int = 235
 
 @onready var pipes:Array[Pipe] = [$pipe_top, $pipe_bottom]
 
@@ -18,9 +18,9 @@ func _ready():
 	visible_on_screen_notifier_2D.screen_entered.connect(func(): self.screen_entered.emit())
 	visible_on_screen_notifier_2D.screen_exited.connect(func(): self.screen_exited.emit())
 
-func _process(_delta):
+func _process(delta):
 	if not is_movement_stopped:
-		translate(velocity)
+		translate(velocity * delta)
 
 func position_and_scale_pipes():
 	for pipe:Pipe in pipes:
