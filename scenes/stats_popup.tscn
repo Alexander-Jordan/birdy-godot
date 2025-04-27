@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bmuylro0wusrx"]
 
 [ext_resource type="Theme" uid="uid://cxlxep458s4bf" path="res://base_theme.tres" id="1_2hptn"]
-[ext_resource type="Script" path="res://scripts/stats_popup.gd" id="2_dromh"]
+[ext_resource type="Script" uid="uid://bi82qyo0aq2dn" path="res://scripts/stats_popup.gd" id="2_dromh"]
 [ext_resource type="Texture2D" uid="uid://bfo7dhrowq268" path="res://assets/sprites/medal_bronze.png" id="3_475ro"]
 [ext_resource type="Texture2D" uid="uid://4wdmhc02c86x" path="res://assets/sprites/medal_silver.png" id="4_qch5g"]
 [ext_resource type="Texture2D" uid="uid://2wegoa1jvcfy" path="res://assets/sprites/medal_gold.png" id="5_ive30"]

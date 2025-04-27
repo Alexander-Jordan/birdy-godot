@@ -12,7 +12,7 @@ config_version=5
 
 config/name="flappy-bird-godot"
 run/main_scene="res://scenes/menu.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
+config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/image="res://assets/splash.png"
 config/icon="res://assets/icon.png"
 boot_splash/minimum_display_time=2000

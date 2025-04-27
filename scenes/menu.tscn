@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://qj3nsj80xvr5" path="res://scenes/parallax_background.tscn" id="1_fw5ay"]
 [ext_resource type="AudioStream" uid="uid://bdfaas4o0p5fw" path="res://assets/audio/music/level-ix-211054.mp3" id="2_3pvqe"]
 [ext_resource type="Theme" uid="uid://cxlxep458s4bf" path="res://base_theme.tres" id="2_8bgur"]
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="3_a0h17"]
+[ext_resource type="Script" uid="uid://cd6ep0hwxutxu" path="res://scripts/main_menu.gd" id="3_a0h17"]
 [ext_resource type="Texture2D" uid="uid://btkunpevs8y88" path="res://assets/sprites/buttons.png" id="4_c7fm2"]
 [ext_resource type="AudioStream" uid="uid://kngsl673hw8l" path="res://assets/audio/sfx/button_click.wav" id="5_aavpl"]
 [ext_resource type="PackedScene" uid="uid://bmuylro0wusrx" path="res://scenes/stats_popup.tscn" id="7_83q1p"]

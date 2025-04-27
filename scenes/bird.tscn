@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://djhxoy6ja30fs"]
 
-[ext_resource type="Script" path="res://scripts/bird.gd" id="1_dvkdq"]
+[ext_resource type="Script" uid="uid://b53uy0wa2y4ux" path="res://scripts/bird.gd" id="1_dvkdq"]
 [ext_resource type="Texture2D" uid="uid://o3yawp4cbinv" path="res://assets/sprites/bird_spritesheet.png" id="1_lm7u2"]
 [ext_resource type="AudioStream" uid="uid://c0wg6ebb784o7" path="res://assets/audio/sfx/flap.mp3" id="2_wegtw"]
 [ext_resource type="AudioStream" uid="uid://c2xnmowyfxc8d" path="res://assets/audio/sfx/collide.wav" id="3_yox7x"]
@@ -93,11 +93,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_431bk"]
 _data = {
-"RESET": SubResource("Animation_q6bti"),
-"collide": SubResource("Animation_5tqct"),
-"dead": SubResource("Animation_tj161"),
-"flap": SubResource("Animation_5aex6"),
-"idle": SubResource("Animation_xr5tx")
+&"RESET": SubResource("Animation_q6bti"),
+&"collide": SubResource("Animation_5tqct"),
+&"dead": SubResource("Animation_tj161"),
+&"flap": SubResource("Animation_5aex6"),
+&"idle": SubResource("Animation_xr5tx")
 }
 
 [node name="Bird" type="CharacterBody2D"]
