@@ -90,8 +90,7 @@ script = ExtResource("3_a0h17")
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
-text = "Flappy
-Bird"
+text = "BIRDY"
 horizontal_alignment = 1
 vertical_alignment = 1
 

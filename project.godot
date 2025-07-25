@@ -10,12 +10,13 @@ config_version=5
 
 [application]
 
-config/name="flappy-bird-godot"
+config/name="Birdy"
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
-boot_splash/image="res://assets/splash.png"
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/image="uid://cyvred8nofoh8"
 config/icon="res://assets/icon.png"
-boot_splash/minimum_display_time=2000
+boot_splash/minimum_display_time=3000
 
 [autoload]
 
