@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dp7iqge7542bm"]
+[gd_scene format=3 uid="uid://dp7iqge7542bm"]
 
 [ext_resource type="PackedScene" uid="uid://djhxoy6ja30fs" path="res://scenes/bird.tscn" id="1_0s3gh"]
 [ext_resource type="Script" uid="uid://bsw36181qyhui" path="res://scripts/GameManager.gd" id="1_fnr07"]
@@ -47,43 +47,43 @@ region = Rect2(16, 48, 16, 16)
 atlas = ExtResource("12_rrtnt")
 region = Rect2(16, 48, 16, 16)
 
-[node name="main" type="Node2D"]
+[node name="main" type="Node2D" unique_id=1581680436]
 
-[node name="GameManager" type="Node2D" parent="."]
+[node name="GameManager" type="Node2D" parent="." unique_id=1927337914]
 script = ExtResource("1_fnr07")
 
-[node name="music_player" type="AudioStreamPlayer" parent="GameManager"]
+[node name="music_player" type="AudioStreamPlayer" parent="GameManager" unique_id=1516888044]
 stream = ExtResource("3_347sc")
 bus = &"music"
 
-[node name="point_audio_player" type="AudioStreamPlayer" parent="GameManager"]
+[node name="point_audio_player" type="AudioStreamPlayer" parent="GameManager" unique_id=340130043]
 stream = ExtResource("2_ccdgh")
 volume_db = -4.0
 bus = &"sfx"
 
-[node name="parallax_background" parent="." instance=ExtResource("4_1upqk")]
+[node name="parallax_background" parent="." unique_id=201629105 instance=ExtResource("4_1upqk")]
 
-[node name="bird" parent="." instance=ExtResource("1_0s3gh")]
+[node name="bird" parent="." unique_id=1271871152 instance=ExtResource("1_0s3gh")]
 position = Vector2(250, 640)
 
-[node name="pipe_handler" type="Node2D" parent="."]
+[node name="pipe_handler" type="Node2D" parent="." unique_id=777460834]
 script = ExtResource("3_c5oxv")
 pipes_scene = ExtResource("4_mfq41")
 
-[node name="ceiling" type="StaticBody2D" parent="."]
+[node name="ceiling" type="StaticBody2D" parent="." unique_id=1186187045]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ceiling"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ceiling" unique_id=51375002]
 shape = SubResource("WorldBoundaryShape2D_kirdg")
 
-[node name="ground" type="StaticBody2D" parent="."]
+[node name="ground" type="StaticBody2D" parent="." unique_id=1399585270]
 position = Vector2(0, 1201)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground" unique_id=612392465]
 shape = SubResource("WorldBoundaryShape2D_t3rog")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=184603037]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1574236284]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -92,10 +92,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("8_uuran")
 
-[node name="start_screen" parent="CanvasLayer/Control" instance=ExtResource("2_yc65a")]
+[node name="start_screen" parent="CanvasLayer/Control" unique_id=1484651017 instance=ExtResource("2_yc65a")]
 layout_mode = 1
 
-[node name="game_screen" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="game_screen" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=1381031698]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -105,7 +105,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_lovtg")
 
-[node name="points_label" type="Label" parent="CanvasLayer/Control/game_screen"]
+[node name="points_label" type="Label" parent="CanvasLayer/Control/game_screen" unique_id=842917830]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
@@ -113,11 +113,11 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="CanvasLayer/Control/game_screen"]
+[node name="Control" type="Control" parent="CanvasLayer/Control/game_screen" unique_id=817989059]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="end_screen" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="end_screen" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=685502190]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -128,11 +128,11 @@ grow_vertical = 2
 script = ExtResource("9_dqg7h")
 medal_textures = Array[Texture]([null, ExtResource("13_achk4"), ExtResource("14_sonal"), ExtResource("15_1h700"), ExtResource("16_fegvh")])
 
-[node name="Control" type="Control" parent="CanvasLayer/Control/end_screen"]
+[node name="Control" type="Control" parent="CanvasLayer/Control/end_screen" unique_id=819050595]
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/end_screen/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/end_screen/Control" unique_id=861273950]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,13 +141,13 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 
-[node name="medal" type="TextureRect" parent="CanvasLayer/Control/end_screen/Control/VBoxContainer"]
+[node name="medal" type="TextureRect" parent="CanvasLayer/Control/end_screen/Control/VBoxContainer" unique_id=971334940]
 texture_filter = 1
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 stretch_mode = 5
 
-[node name="score" type="Label" parent="CanvasLayer/Control/end_screen/Control/VBoxContainer"]
+[node name="score" type="Label" parent="CanvasLayer/Control/end_screen/Control/VBoxContainer" unique_id=1067504872]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 50
@@ -155,19 +155,19 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="best_score" type="Label" parent="CanvasLayer/Control/end_screen/Control/VBoxContainer"]
+[node name="best_score" type="Label" parent="CanvasLayer/Control/end_screen/Control/VBoxContainer" unique_id=1783137217]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/end_screen"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/end_screen" unique_id=1856827930]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 
-[node name="restart_button" type="TextureButton" parent="CanvasLayer/Control/end_screen/HBoxContainer"]
+[node name="restart_button" type="TextureButton" parent="CanvasLayer/Control/end_screen/HBoxContainer" unique_id=2032937844]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_csc1e")
@@ -175,7 +175,7 @@ texture_pressed = SubResource("AtlasTexture_6d0i7")
 texture_disabled = SubResource("AtlasTexture_jmctv")
 stretch_mode = 5
 
-[node name="menu_button" type="TextureButton" parent="CanvasLayer/Control/end_screen/HBoxContainer"]
+[node name="menu_button" type="TextureButton" parent="CanvasLayer/Control/end_screen/HBoxContainer" unique_id=992109353]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_muuvi")
@@ -184,7 +184,7 @@ texture_disabled = SubResource("AtlasTexture_20uh3")
 stretch_mode = 5
 flip_h = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Control/end_screen"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Control/end_screen" unique_id=758473371]
 stream = ExtResource("13_chgho")
 
 [connection signal="game_over" from="GameManager" to="CanvasLayer/Control/game_screen" method="_on_game_manager_game_over"]

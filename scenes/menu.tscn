@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://duk810egukxlk"]
+[gd_scene format=3 uid="uid://duk810egukxlk"]
 
 [ext_resource type="PackedScene" uid="uid://qj3nsj80xvr5" path="res://scenes/parallax_background.tscn" id="1_fw5ay"]
 [ext_resource type="AudioStream" uid="uid://bdfaas4o0p5fw" path="res://assets/audio/music/level-ix-211054.mp3" id="2_3pvqe"]
@@ -56,19 +56,19 @@ region = Rect2(16, 16, 16, 16)
 atlas = ExtResource("4_c7fm2")
 region = Rect2(16, 16, 16, 16)
 
-[node name="menu" type="Node2D"]
+[node name="menu" type="Node2D" unique_id=908249349]
 
-[node name="parallax_background" parent="." instance=ExtResource("1_fw5ay")]
+[node name="parallax_background" parent="." unique_id=44434240 instance=ExtResource("1_fw5ay")]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=821403560]
 stream = ExtResource("2_3pvqe")
 volume_db = -8.0
 autoplay = true
 bus = &"music"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1600644387]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=2122465760]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,7 +77,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_8bgur")
 
-[node name="main_menu" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="main_menu" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=885905382]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,7 +86,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_a0h17")
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/main_menu"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/main_menu" unique_id=774699317]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
@@ -94,12 +94,12 @@ text = "BIRDY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="main_buttons" type="HBoxContainer" parent="CanvasLayer/Control/main_menu"]
+[node name="main_buttons" type="HBoxContainer" parent="CanvasLayer/Control/main_menu" unique_id=1972000441]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="start_button" type="TextureButton" parent="CanvasLayer/Control/main_menu/main_buttons"]
+[node name="start_button" type="TextureButton" parent="CanvasLayer/Control/main_menu/main_buttons" unique_id=183225480]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_74y18")
@@ -107,7 +107,7 @@ texture_pressed = SubResource("AtlasTexture_6ltnl")
 texture_disabled = SubResource("AtlasTexture_hyyjw")
 stretch_mode = 5
 
-[node name="stats_button" type="TextureButton" parent="CanvasLayer/Control/main_menu/main_buttons"]
+[node name="stats_button" type="TextureButton" parent="CanvasLayer/Control/main_menu/main_buttons" unique_id=1898443375]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_fdhd1")
@@ -115,19 +115,19 @@ texture_pressed = SubResource("AtlasTexture_8vooh")
 texture_disabled = SubResource("AtlasTexture_fs3x6")
 stretch_mode = 5
 
-[node name="settings_buttons" type="MarginContainer" parent="CanvasLayer/Control/main_menu"]
+[node name="settings_buttons" type="MarginContainer" parent="CanvasLayer/Control/main_menu" unique_id=1109068014]
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/main_menu/settings_buttons"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/main_menu/settings_buttons" unique_id=702137957]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="music_button" type="TextureButton" parent="CanvasLayer/Control/main_menu/settings_buttons/HBoxContainer"]
+[node name="music_button" type="TextureButton" parent="CanvasLayer/Control/main_menu/settings_buttons/HBoxContainer" unique_id=1384376021]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 toggle_mode = true
@@ -136,7 +136,7 @@ texture_pressed = SubResource("AtlasTexture_q2a5m")
 texture_disabled = SubResource("AtlasTexture_pls1e")
 stretch_mode = 5
 
-[node name="sfx_button" type="TextureButton" parent="CanvasLayer/Control/main_menu/settings_buttons/HBoxContainer"]
+[node name="sfx_button" type="TextureButton" parent="CanvasLayer/Control/main_menu/settings_buttons/HBoxContainer" unique_id=1916993064]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 toggle_mode = true
@@ -145,9 +145,9 @@ texture_pressed = SubResource("AtlasTexture_qrdl4")
 texture_disabled = SubResource("AtlasTexture_goaxs")
 stretch_mode = 5
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Control/main_menu"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Control/main_menu" unique_id=897272237]
 stream = ExtResource("5_aavpl")
 bus = &"sfx"
 
-[node name="stats_popup" parent="CanvasLayer/Control/main_menu" instance=ExtResource("7_83q1p")]
+[node name="stats_popup" parent="CanvasLayer/Control/main_menu" unique_id=1154613466 instance=ExtResource("7_83q1p")]
 visible = false
